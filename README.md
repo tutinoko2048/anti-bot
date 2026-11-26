@@ -4,6 +4,8 @@ A [LeviLamina](https://github.com/LiteLDev/LeviLamina) client mod for Minecraft 
 
 自分がホストしているワールドに入ってきて広告をスパムするボットを、自動でキックするLeviLamina Client用modです。
 
+![ボットがログインから約0.1秒でキックされた時のログ](docs/screenshot.png)
+
 ## 仕組み
 
 スパムボットは参加処理を最後まで行わず（`SetLocalPlayerAsInitialized` を送らない）、ログイン直後から `/me` などのコマンドやチャットを送ってきます。このmodは次の場合にそのメッセージを捨て、相手を切断します。
