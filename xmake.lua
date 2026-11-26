@@ -1,5 +1,8 @@
 add_rules("mode.debug", "mode.release")
 
+-- Mod version: CI release builds pass MOD_VERSION (from the tag), local builds use the default.
+local modVersion = os.getenv("MOD_VERSION") or "0.1.0"
+
 add_repositories("levimc-repo https://github.com/LiteLDev/xmake-repo.git")
 
 option("target_type")
@@ -21,7 +24,7 @@ end
 
 target("anti-bot")
     add_rules("@levibuildscript/linkrule")
-    add_rules("@levibuildscript/modpacker", {modVersion = "0.1.0"})
+    add_rules("@levibuildscript/modpacker", {modVersion = modVersion})
     if is_plat("windows") then
         add_defines("NOMINMAX", "UNICODE", "_HAS_CXX23=1")
         set_exceptions("none") -- To avoid conflicts with /EHa.

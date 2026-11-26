@@ -56,4 +56,9 @@ xmake
 
 出力先は `bin/anti-bot/` です。初回はLeviLaminaのSDKのビルドに時間がかかります。
 
+GitHub Actionsでもビルドしています。
+
+- push・PRのたびに `Build` ワークフローがビルドし、`bin/` をアーティファクトとして保存します。
+- `v0.2.0` のようなタグでReleaseを公開すると、`Release` ワークフローがタグからバージョンを取ってビルドし、`anti-bot-client-windows-x64.zip` をReleaseに添付します。
+
 > パスが長い場所に置くと、xmakeがリポジトリを複製するときにgitがパス長の制限で失敗します。浅い場所（例: `W:\projects\anti-bot`）に置いてください。
