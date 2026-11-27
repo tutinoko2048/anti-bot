@@ -110,8 +110,13 @@ bool isClientSentOrigin(CommandOriginType type) {
     }
 }
 
+// The world's host is never a bot. A host with a websocket (/connect) legitimately sends
+// AutomationPlayer commands such as getlocalplayername the moment they enter the world.
+bool isHost(Player const& player) { return player.mIsHostingPlayer; }
+
 void onConnect(ll::event::PlayerConnectEvent& event) {
-    auto&   player = event.self();
+    auto& player = event.self();
+    if (isHost(player)) return; // no session: none of the rules apply to the host
     Session session{
         player.getRealName(),
         player.getXuid(),
@@ -144,6 +149,7 @@ void onCommand(ll::event::ExecutingCommandEvent& event) {
     auto* entity = origin->getEntity();
     if (!entity || !entity->isPlayer()) return;
     auto& player = static_cast<Player&>(*entity);
+    if (isHost(player)) return;
 
     if (flagIfNotJoined(player, "command: " + event.commandContext().mCommand)) {
         event.cancel();

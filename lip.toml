@@ -1,6 +1,6 @@
 format = 4
 id = "github.com/tutinoko2048/anti-bot"
-version = "0.1.0"
+version = "0.1.1"
 
 [info]
 name = "Anti Bot"

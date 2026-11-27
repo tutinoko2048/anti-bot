@@ -1,7 +1,7 @@
 add_rules("mode.debug", "mode.release")
 
 -- Mod version: CI release builds pass MOD_VERSION (from the tag), local builds use the default.
-local modVersion = os.getenv("MOD_VERSION") or "0.1.0"
+local modVersion = os.getenv("MOD_VERSION") or "0.1.1"
 
 add_repositories("levimc-repo https://github.com/LiteLDev/xmake-repo.git")
 

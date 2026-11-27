@@ -15,6 +15,8 @@ A [LeviLamina](https://github.com/LiteLDev/LeviLamina) client mod for Minecraft 
 - ログインしてから一定時間が過ぎても参加処理を終えない
 - このゲームセッション中に一度キックした相手（XUID、無ければ名前）が再接続してきた
 
+ホスト自身は対象外です。ホストが `/connect` でWebSocketに接続していると `AutomationPlayer` のコマンドが正規に送られるためです。ホスト以外の参加者がWebSocketを使う場合は `kickOnSpoofedOrigin` を `false` にしてください（キックはされなくなりますが、そのコマンドは引き続き捨てられます）。
+
 独自のフックは使わず、LeviLaminaのイベント（`PlayerConnectEvent`、`PlayerJoinEvent`、`PlayerChatEvent`、`ExecutingCommandEvent`、`PlayerDisconnectEvent`、`ServerLevelTickEvent`）だけで動きます。
 
 ワールドのホストの環境でだけ動作します。レルムや外部サーバーでは効果がありません。
